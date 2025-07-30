@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puretork | Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      background-color: #000000;
+      color: #F4B728;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: #F4B728;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background-color: #F4B728;
+      color: #000000;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+    }
+    .content {
+      padding: 2rem;
+      text-align: center; /* Center content for better image presentation */
+    }
+    .content img {
+      max-width: 100%; /* Make image responsive */
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 2rem; /* Spacing below the image */
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 1.5rem;
+      text-align: center;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+    .product-card h3 {
+      color: #F4B728;
+      margin-top: 0;
+    }
+    footer {
+      background-color: #000000;
+      color: #ffffff;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Puretork</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="products.html">Products</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Our Products</h1>
+    <p>Explore our range of high-performance actuator solutions.</p>
+  </section>
+
+  <section class="content">
+    <img src="https://placehold.co/800x400/F4B728/000000?text=Advanced+Actuation+Products" alt="Various types of industrial actuators" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
+    <h2>Actuation Solutions for Every Need</h2>
+    <p>Puretork offers a comprehensive portfolio of actuators designed for various industrial and commercial applications. Our products are engineered for precision, durability, and efficiency, ensuring optimal performance in demanding environments.</p>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <h3>Electric Actuators</h3>
+        <p>Precision control and energy efficiency for automated systems.</p>
+      </div>
+      <div class="product-card">
+        <h3>Pneumatic Actuators</h3>
+        <p>Robust and reliable solutions for high-speed and heavy-duty applications.</p>
+      </div>
+      <div class="product-card">
+        <h3>Hydraulic Actuators</h3>
+        <p>High force and precise positioning for demanding industrial processes.</p>
+      </div>
+      <div class="product-card">
+        <h3>Rotary Actuators</h3>
+        <p>Compact and powerful solutions for rotational motion control.</p>
+      </div>
+      <div class="product-card">
+        <h3>Linear Actuators</h3>
+        <p>Smooth and accurate linear movement for a wide range of applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Puretork. All rights reserved.</p>
+  </footer>
+</body>
+</html>
