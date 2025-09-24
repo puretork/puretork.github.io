@@ -6,6 +6,7 @@
 <link rel="icon" type="image/png" href="Favicon 32x32.png">
   <title>Puretork | High-Performance Pneumatic Actuators</title>
   <style>
+     /* Styles for screens larger than 768px (e.g., desktops and tablets) */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,9 +14,18 @@
       color: #000000;
 	  background-image: url("product_img_0010.png");  /* path to your image */
   background-repeat: no-repeat;             /* don’t tile it */
-  background-size: 100%;                   
-  background-position: 50% 125%; 
+  background-size: cover;                   
+  background-position: center bottom; 
     }
+	/* Media query for screens up to 768px (e.g., phones) */
+@media (max-width: 768px) {
+    body {
+        /* You might want a different background-size for smaller screens */
+        background-size: 200%;
+        /* You might also want to adjust the position */
+        background-position: 50% 85%;
+    }
+}
     header {
       background-color: #000000;
       color: #F4B728;
@@ -140,4 +150,5 @@
 
 
 </body></html>
+
 
