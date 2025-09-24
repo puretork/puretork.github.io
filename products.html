@@ -57,6 +57,7 @@ html, body {
       align-items: center;
 	  position: relative;        /* ✅ anchor absolute menu to header */
     }
+
 	
 	/* Desktop / tablet */
 	nav{
@@ -74,6 +75,12 @@ html, body {
 	  padding:0 .75rem;             /* spacing inside the link */
 	}
 
+	/* In case some other CSS had margin-left:auto on the last link */
+	nav a:last-child{
+		  margin-left:0 !important;     /* prevents it from being pushed to the right */
+		  /* if you want it white: */
+		  color:#fff;
+		}
 
 .main-nav {
   display: flex;
@@ -147,6 +154,7 @@ color: #333333;
     .content {
       padding: 2rem;
       text-align: center; /* Center content for better image presentation */
+		flex-grow: 1;		
     }
     .content img {
       max-width: 100%; /* Make image responsive */
@@ -197,7 +205,7 @@ color: #333333;
 }
     /* Styles for the logo */
     .logo {
-      max-width: 280px;
+      max-width: 275px;
 	  height: auto; /* Adjust height as needed */
     }
     .table-container {
@@ -292,7 +300,7 @@ color: #333333;
     <a href="index.html">Home</a>
     <a href="about.html">About Us</a>
     <a href="products.html">Products</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html">Contact Us</a>
   </nav>
 </header>
  <section class="page-wrapper">
@@ -308,7 +316,7 @@ color: #333333;
   <a href="#overview">Overview</a>
   <a href="#torque-chart">Torque Chart</a>
   <a href="#torque-tables">Torque Tables</a>
-  <a href="#contact">Contact</a>
+  <a href="contact.html">Contact Us</a>
 </nav>
     <img src="product_img_0001 900x900.png" height="400" width="800" alt="Image of Puretork Actuator Series" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
     <div class="product-section">

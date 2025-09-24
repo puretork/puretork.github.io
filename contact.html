@@ -46,7 +46,7 @@ html, body {
       color: #000000;
 	  display: flex;
 		flex-direction: column;
-		position relative;
+		position: relative;
     }
     header {
       background-color: #000000;
@@ -55,6 +55,7 @@ html, body {
       display: flex;
       justify-content: space-between;
       align-items: center;
+		position: relative;								  
     }
     /* Desktop / tablet */
 	nav{
@@ -79,20 +80,61 @@ html, body {
 		  color:#fff;
 		}
 
-		/* Phone smaller than 480px */
-	@media (max-width:480px){
-	  nav{
-		flex-direction:column;
-		align-items:flex-end;        /* right edge */
-		text-align:right;
-		padding-right:16px;          /* breathing room from the screen edge */
-	  }
-	  nav a{
-		display:block;
-		width:100%;
-		padding:.5rem 0;             /* comfy tap targets */
-	  }
-	}
+.main-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1000;           /* ✅ ensure it overlays content */
+  }
+}
+
+/* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #F4B728;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;               /* hide nav by default */
+    flex-direction: column;
+    background: #000;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;                   /* drop below header */
+    right: 0;
+    left: 0;
+  }
+  .main-nav.show {
+    display: flex;               /* show nav when toggled */
+  }
+  .menu-toggle {
+    display: block;              /* show hamburger on mobile */
+  }
+  .main-nav a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    color: #F4B728;
+  }
+  .main-nav a:last-child {
+    border-bottom: none;
+  }
+}
     .hero {
       background-color: rgba(244, 183, 40, 0.85);/*#F4B728;*/
       color: #000000;
@@ -109,6 +151,7 @@ color: #333333;
     .content {
       padding: 2rem;
       text-align: center; /* Center content for better image presentation */
+		flex-grow: 1;		
     }
     .content img {
       max-width: 100%; /* Make image responsive */
@@ -118,7 +161,7 @@ color: #333333;
     }
 /* Styles for the logo */
     .logo {
-      max-width: 280px;
+      max-width: 275px;
 	  height: auto; /* Adjust height as needed */
 }
     .contact-info {
@@ -154,16 +197,20 @@ color: #333333;
     <!-- <div class="logo">Puretork</div> -->
     <div class="logo-container">
       <img src="LogoV5_horizontal.png" alt="Puretork Company Logo" class="logo">
-    </div> 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="products.html">Products</a>
-      <!-- <a href="services.html">Services</a> -->
-      <a href="contact.html">Contact</a>
-      <!-- Language switcher -->
-      <a href="index_tc.html" style="color: white;">中文</a>
-    </nav>
+    </div>
+	<!-- Hamburger button (only shows on mobile) -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+												   
+    <a href="contact.html">Contact Us</a>
+								
+															  
+  </nav>
   </header>
  <section class="page-wrapper">
   <section class="hero">
@@ -213,6 +260,14 @@ color: #333333;
   <footer>
     <p>&copy; 2025 Puretork. All rights reserved.</p>
   </footer>
+ <script>
+  const menuBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>		  
 </body>
 </html>
 
