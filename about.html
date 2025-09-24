@@ -3,13 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="Favicon 32x32.png">
   <title>Puretork | About Us</title>
   <style>
+ /* Styles for screens larger than 768px (e.g., desktops and tablets) */
+  .page-wrapper {
+    position: relative;
+	background-image: url("product_img_0010.png");
+    background-size: 155%; /* or contain, or a specific size */
+    background-repeat: no-repeat;
+    background-position: 50% 20%;
+	flex-grow: 1;
+}
+  /* Media query for screens up to 768px (e.g., phones) */
+@media (max-width: 768px) {
+    .page-wrapper {
+        /* You might want a different background-size for smaller screens */
+        background-size: 300%;
+        background-repeat: no-repeat;
+		background-position: center bottom;
+		flex-grow: 1;
+    }
+}
+ /*.page-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05) /* Adjust opacity here (0.0 to 1.0) */
+    z-index: -1;  /*Place the overlay behind the content */
+}*/
+html, body {
+    height: 100%; /* Important: Make sure both html and body take up the full viewport height */
+    margin: 0;
+}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       color: #000000;
+	  display: flex;
+		flex-direction: column;
+		position relative;
     }
     header {
       background-color: #000000;
@@ -19,30 +56,111 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav a {
-      color: #F4B728;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    /* Desktop / tablet */
+	nav{
+	  display:flex;
+	  align-items:center;
+	  justify-content:flex-start;   /* ensure nothing is spaced out */
+	  gap:0.75rem;                  /* use gap for spacing, not margins */
+	}
+
+	nav a{
+	  color:#F4B728;
+	  text-decoration:none;
+	  font-weight:bold;
+	  margin:0;                     /* reset any margins */
+	  padding:0 .75rem;             /* spacing inside the link */
+	}
+
+	/* In case some other CSS had margin-left:auto on the last link */
+	nav a:last-child{
+		  margin-left:0 !important;     /* prevents it from being pushed to the right */
+		  /* if you want it white: */
+		  color:#fff;
+		}
+
+		/* Phone smaller than 480px */
+	@media (max-width:480px){
+	  nav{
+		flex-direction:column;
+		align-items:flex-end;        /* right edge */
+		text-align:right;
+		padding-right:16px;          /* breathing room from the screen edge */
+	  }
+	  nav a{
+		display:block;
+		width:100%;
+		padding:.5rem 0;             /* comfy tap targets */
+	  }
+	}
     .hero {
-      background-color: #F4B728;
+      background-color: rgba(244, 183, 40, 0.85);/*#F4B728;*/
       color: #000000;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
     }
     .hero h1 {
       font-size: 3rem;
     }
+    .hero h2 {
+      font-size: 1.5rem;
+		color: #333333;
+    }
     .content {
       padding: 2rem;
       text-align: center; /* Center content for better image presentation */
+	  flex-grow: 1;
     }
     .content img {
       max-width: 100%; /* Make image responsive */
       height: auto;
       border-radius: 8px;
       margin-bottom: 2rem; /* Spacing below the image */
+    }
+    /* Style for the new sections */
+    .content {
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      text-align: left;
+    }
+    .content h2, .content h3 {
+      color: #000000;
+      border-bottom: 2px solid #F4B728;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    .content p {
+      line-height: 1.6;
+    }
+    .chart-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .chart {
+      flex: 1 1 calc(50% - 2rem);
+      max-width: 400px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    /* Styles for the logo */
+    .logo {
+      max-width: 280px;
+	  height: auto; /* Adjust height as needed */
+    }
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+    .table-section {
+        flex: 1 1 calc(50% - 2rem);
     }
     footer {
       background-color: #000000;
@@ -54,37 +172,54 @@
 </head>
 <body>
   <header>
-    <div class="logo">Puretork</div>
+    <!-- <div class="logo">Puretork</div> -->
+    <div class="logo-container">
+      <img src="LogoV5_horizontal.png" alt="Puretork Company Logo" class="logo">
+    </div> 
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="products.html">Products</a>
-      <a href="services.html">Services</a>
+      <!-- <a href="services.html">Services</a> -->
       <a href="contact.html">Contact</a>
+      <!-- Language switcher -->
+
     </nav>
   </header>
-
+<section class="page-wrapper">
   <section class="hero">
-    <h1>About Puretork</h1>
-    <p>Innovating actuation solutions for a more efficient future.</p>
+    <h1>About Puretork | Quarter-Turn Pneumatic Actuator Manufacturer</h1>
+   <h2>A new brand built on 35+ years of precision engineering in rack & pinion actuator design</h2>
   </section>
 
   <section class="content">
-    <img src="https://placehold.co/800x400/F4B728/000000?text=Our+Team+and+Vision" alt="Puretork team working collaboratively" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
-    <h2>Our Story</h2>
-    <p>Puretork was founded in [Year] with a vision to revolutionize the industrial and commercial actuation landscape. With decades of combined experience, our team is dedicated to designing, manufacturing, and delivering high-quality, reliable, and innovative motion control systems.</p>
-    <h2>Our Mission</h2>
-    <p>To empower industries with superior actuation technology, ensuring precision, durability, and unmatched performance in every application.</p>
-    <h2>Our Values</h2>
-    <ul>
-      <li>**Excellence:** We strive for the highest standards in everything we do, from product design to customer service.</li>
-      <li>**Innovation:** We continuously explore new technologies and methodologies to push the boundaries of actuation.</li>
-      <li>**Reliability:** Our products are built to last, providing consistent and dependable performance in the most demanding environments.</li>
-      <li>**Customer Focus:** We are committed to understanding and exceeding our clients' expectations, building lasting partnerships.</li>
-      <li>**Integrity:** We conduct our business with honesty, transparency, and a strong ethical compass.</li>
-    </ul>
-  </section>
+  <div class="Introduction">
+    <h2>Brand Origins</h2>
+    <p style="text-align: left;">
+      Puretork was officially launched in 2025 as a new brand from Taiwan, specializing in quarter-turn rack &amp; pinion pneumatic actuators. While the brand is new, it builds on the legacy of TAIWAN VALVE CO., LTD, established in 1988, with more than 35 years of precision valve manufacturing experience and global export success.
+    </p>
 
+    <h2>Heritage Since 1988</h2>
+    <p style="text-align: left;">
+      Our story began in 1988 with the founding of TAIWAN VALVE CO., LTD, dedicated to producing stainless steel ball valves and related components. With over 95% of its products exported worldwide, the company became a trusted long-term partner for international customers through consistent quality and reliable supply.
+    </p>
+
+    <p style="text-align: left;">
+      In 2011, we established PURETORQ CONTROL VALVES CO., LTD and introduced the world’s first Rack &amp; Pinion Return (RPR) pneumatic actuator. This pioneering air reservoir design replaced traditional spring return systems, offering both single-acting and double-acting configurations. While the market was not yet ready to adopt the technology, it laid the foundation for Puretork’s breakthrough today.
+    </p>
+
+    <h2>Technical Advantages</h2>
+    <p style="text-align: left;">
+      The <STRONG>PRPA (Puretork Rack &amp; Pinion Actuator)</STRONG> features a proprietary springless air fail-safe design that eliminates the risks of heavy springs, enhancing safety and reliability. By combining double-acting and fail-safe modes in one actuator, it reduces inventory, simplifies maintenance, and cuts air consumption by up to 70%. Compact, lightweight, and delivering full torque performance, the PRPA lowers costs while protecting both people and processes.
+	</p>  
+	  <h2>Future Vision</h2>
+     
+	 <p style="text-align: left;">At Puretork, our vision goes beyond building actuators — we aim to share the latest engineering advancements with the world. Whether through our own brand or in partnership with distributors, we are flexible in how we bring value to the market. By working together, we can deliver safer, more efficient pneumatic actuators and share the benefits of innovation, helping industries everywhere move forward together.
+      </p>
+
+    </div>
+  </section>
+</section>
   <footer>
     <p>&copy; 2025 Puretork. All rights reserved.</p>
   </footer>

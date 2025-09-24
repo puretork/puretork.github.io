@@ -3,13 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puretork | Products</title>
+<link rel="icon" type="image/png" href="Favicon 32x32.png">
+  <title>Puretork | Actuators</title>
   <style>
+/* Styles for screens larger than 768px (e.g., desktops and tablets) */
+  .page-wrapper {
+    position: relative;
+	/*background-image: url("product_img_0010.png");
+    background-size: 155%; /* or contain, or a specific size */
+    background-repeat: no-repeat;
+    background-position: 50% 20%;*/
+	flex-grow: 1;
+}
+  /* Media query for screens up to 768px (e.g., phones) */
+@media (max-width: 768px) {
+    .page-wrapper {
+        /* You might want a different background-size for smaller screens */
+       /* background-size: 300%;
+        background-repeat: no-repeat;
+		background-position: center bottom;*/
+		flex-grow: 1;
+    }
+}
+ /*.page-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.05) /* Adjust opacity here (0.0 to 1.0) */
+    z-index: -1;  /*Place the overlay behind the content */
+}*/
+html, body {
+    height: 100%; /* Important: Make sure both html and body take up the full viewport height */
+    margin: 0;
+}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       color: #000000;
+	  display: flex;
+		flex-direction: column;
+		position: relative;
     }
     header {
       background-color: #000000;
@@ -18,21 +55,94 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+	  position: relative;        /* ✅ anchor absolute menu to header */
     }
-    nav a {
-      color: #F4B728;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+	
+	/* Desktop / tablet */
+	nav{
+	  display:flex;
+	  align-items:center;
+	  justify-content:flex-start;   /* ensure nothing is spaced out */
+	  gap:0.75rem;                  /* use gap for spacing, not margins */
+	}
+
+	nav a{
+	  color:#F4B728;
+	  text-decoration:none;
+	  font-weight:bold;
+	  margin:0;                     /* reset any margins */
+	  padding:0 .75rem;             /* spacing inside the link */
+	}
+
+
+.main-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: 1000;           /* ✅ ensure it overlays content */
+  }
+}
+
+/* Hide hamburger on desktop */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  color: #F4B728;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;               /* hide nav by default */
+    flex-direction: column;
+    background: #000;
+    padding: 1rem;
+    position: absolute;
+    top: 100%;                   /* drop below header */
+    right: 0;
+    left: 0;
+  }
+  .main-nav.show {
+    display: flex;               /* show nav when toggled */
+  }
+  .menu-toggle {
+    display: block;              /* show hamburger on mobile */
+  }
+  .main-nav a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #333;
+    color: #F4B728;
+  }
+  .main-nav a:last-child {
+    border-bottom: none;
+  }
+}
+    
     .hero {
-      background-color: #F4B728;
+      background-color: rgba(244, 183, 40, 0.85);/*#F4B728;*/
       color: #000000;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
     }
     .hero h1 {
       font-size: 3rem;
+    }
+.hero h2 {
+      font-size: 1.5rem;
+color: #333333;
     }
     .content {
       padding: 2rem;
@@ -44,22 +154,62 @@
       border-radius: 8px;
       margin-bottom: 2rem; /* Spacing below the image */
     }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    /* Style for the new sections */
+    .product-section {
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      text-align: left;
+    }
+    .product-section h2, .product-section h3 {
+      color: #000000;
+      border-bottom: 2px solid #F4B728;
+      padding-bottom: 0.5rem;
       margin-top: 2rem;
     }
-    .product-card {
-      border: 1px solid #ddd;
-      padding: 1.5rem;
-      text-align: center;
-      background-color: #f9f9f9;
-      border-radius: 8px;
+    .product-section p {
+      line-height: 1.6;
     }
-    .product-card h3 {
-      color: #F4B728;
-      margin-top: 0;
+    .chart-container {
+  display: flex;
+  justify-content: center;   /* center the chart horizontally */
+  margin-top: 2rem;
+  width: 100%;               /* container fills page width */
+}
+
+.chart {
+  flex: 1 1 100%;            /* allow it to grow full width */
+  max-width: 800px;          /* cap size on large screens */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;        /* center the title */
+}
+
+.chart img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;               /* make chart fill the box */
+  max-width: 500px;          /* same as chart box */
+  height: auto;              /* keep proportions */
+  border-radius: 4px;
+
+}
+    /* Styles for the logo */
+    .logo {
+      max-width: 280px;
+	  height: auto; /* Adjust height as needed */
+    }
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-top: 1rem;
+		text-align:center;
+    }
+    .table-section {
+        flex: 1 1 calc(50% - 2rem);
     }
     footer {
       background-color: #000000;
@@ -67,56 +217,183 @@
       text-align: center;
       padding: 1rem;
     }
+	.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  justify-content: center;
+  margin: 1.25rem auto 2rem;
+  max-width: 900px;
+}
+.quick-nav a {
+  display: inline-block;
+  padding: .6rem .95rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  font-weight: 600;
+  background: #F4B728;       /* brand yellow */
+  color: #000;
+  border: 1px solid #d3a31f;
+}
+.quick-nav a:hover { filter: brightness(0.95); }
+
+/* --- Make content text more readable --- */
+.content p { font-size: 1.1rem; line-height: 1.7; }
+
+/* --- Section anchors spacing (so headings don't hide under fixed headers if you add one later) --- */
+.product-section [id] { scroll-margin-top: 80px; }
+
+/* --- Overview highlights --- */
+.highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem 1rem;
+  max-width: 900px;
+}
+.highlights li {
+  background: #f7f7f7;
+  border: 1px solid #eee;
+  border-radius: .5rem;
+  padding: .75rem .9rem;
+}
+@media (max-width: 640px) {
+  .highlights { grid-template-columns: 1fr; }
+}
+
+/* optional small, secondary label look for DA/FS headings */
+.product-section h4 { margin-bottom: .4rem; }
+.disclaimer {
+  font-size: 0.8rem;       /* smaller, like fine print */
+  color: #666;             /* muted gray */
+  margin-top: 1.5rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Puretork</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="products.html">Products</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  
+    <header>
+  <div class="logo-container">
+    <img src="LogoV5_horizontal.png" alt="Puretork Company Logo" class="logo">
+  </div>
 
+  <!-- Hamburger button (only shows on mobile) -->
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+ <section class="page-wrapper">
   <section class="hero">
-    <h1>Our Products</h1>
-    <p>Explore our range of high-performance actuator solutions.</p>
+    <h1>Puretork Actuator Series</h1>
+    <h2>More torque. More safety. More reliability in every stroke.</h2>
   </section>
 
   <section class="content">
-    <img src="https://placehold.co/800x400/F4B728/000000?text=Advanced+Actuation+Products" alt="Various types of industrial actuators" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
-    <h2>Actuation Solutions for Every Need</h2>
-    <p>Puretork offers a comprehensive portfolio of actuators designed for various industrial and commercial applications. Our products are engineered for precision, durability, and efficiency, ensuring optimal performance in demanding environments.</p>
+  <!-- Quick Navigation -->
+<nav class="quick-nav" aria-label="Section navigation">
+  <a href="#all-in-one">All-in-One</a>
+  <a href="#overview">Overview</a>
+  <a href="#torque-chart">Torque Chart</a>
+  <a href="#torque-tables">Torque Tables</a>
+  <a href="#contact">Contact</a>
+</nav>
+    <img src="product_img_0001 900x900.png" height="400" width="800" alt="Image of Puretork Actuator Series" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
+    <div class="product-section">
+      <h2 id="all-in-one">All-in-One Solution: Double-Acting &amp; Fail-Safe in One Actuator</h2>
+      
+      <h4><strong>DA — Double Acting (Normal Operation)</strong></h4>
+<ul>
+  <li>100% torque output</li>
+</ul>
 
-    <div class="product-grid">
-      <div class="product-card">
-        <h3>Electric Actuators</h3>
-        <p>Precision control and energy efficiency for automated systems.</p>
+<h4><strong>FS — Fail-Safe / Single Acting (During Air Supply Loss)</strong></h4>
+<ul>
+  <li>Start: 86% torque</li>
+  <li>End: 68% torque</li>
+</ul>
+
+<p><strong>Mode flexibility:</strong> Supports Fail-Close (90→0°) and Fail-Open (0→90°) <u>without disassembly</u> — no springs or pistons need to be removed or reinstalled.</p>
+      
+      <h2 id="overview">Overview</h2>
+
+<ul class="highlights">
+  <li><strong>Springless air fail-safe:</strong> eliminates bulky springs and associated wear/break/handling risks to enhance safety.</li>
+  <li><strong>All-in-one flexibility:</strong> one actuator supports double-acting and single-acting (fail-safe) modes with no internal changes required.</li>
+  <li><strong>Lower operating cost:</strong> up to 50–70% less air consumption; one SKU covers multiple configurations to reduce inventory.</li>
+  <li><strong>More torque:</strong> consistent 100% torque in normal operation and double the fail-safe torque during air loss vs. spring return.</li>
+  <li><strong>Compact &amp; lightweight:</strong> up to 50% lighter than spring-return designs.</li>
+  <li><strong>Hygienic &amp; durable:</strong> no spring means ambient air does not enter the actuator; only clean instrument air is used.</li>
+</ul>
+
+<!-- Keep the full narrative accessible but collapsible -->
+<details>
+  <summary>Read the full overview</summary>
+  <p style="text-align: left; margin-top:.75rem;">
+    The <strong>PRPA (Puretork Rack &amp; Pinion Actuator)</strong> is a next-generation quarter-turn pneumatic actuator with a proprietary springless air fail-safe design. It eliminates bulky springs, reducing the risk of wear or breakage and improving overall safety.
+  </p>
+  <p style="text-align: left;">
+    The PRPA offers configuration flexibility: one actuator supports both double-acting and single-acting (fail-safe) modes with no internal changes. This reduces complexity, minimizes inventory, and lowers operating costs.
+  </p>
+  <p style="text-align: left;">
+    Compared to traditional spring-return actuators, the PRPA consumes 50–70% less air and is up to 50% lighter. It also delivers more consistent torque — maintaining 100% torque in normal operation and providing up to twice the fail-safe torque during air supply loss.
+  </p>
+  <p style="text-align: left;">
+    Its sealed, positive-pressure design prevents microbial contamination, ensures washdown/CIP compatibility, and extends service life by reducing wear. Combining safety, efficiency, and sustainability, the PRPA sets a new benchmark in rack &amp; pinion pneumatic actuator performance.
+  </p>
+</details>
+ 
+      <div class="chart-container">
+        <div class="chart">
+          <h3 id="torque-chart">Torque Chart</h3>
+          <img src="Torque Chart.png" alt="Torque Chart" />
+        </div>
       </div>
-      <div class="product-card">
-        <h3>Pneumatic Actuators</h3>
-        <p>Robust and reliable solutions for high-speed and heavy-duty applications.</p>
+
+      <h2 id="torque-tables">Torque Tables</h2>
+
+      <div class="table-container">
+          <div class="table-section">
+              <h3>Metric Table</h3>
+              <img src="torqueTable(Metric).png" alt="Puretork Actuator Series Torque Table in Metric Units" style="max-width: 100%; height: auto; border-radius: 8px;" />
+          </div>
       </div>
-      <div class="product-card">
-        <h3>Hydraulic Actuators</h3>
-        <p>High force and precise positioning for demanding industrial processes.</p>
+      <div class="table-container">
+          <div class="table-section">
+              <h3>Imperial Table</h3>
+
+              <img src="torqueTable(Imperial).png" alt="Puretork Actuator Series Torque Table in Imperial Units" style="max-width: 100%; height: auto; border-radius: 8px;" />
+          </div>
       </div>
-      <div class="product-card">
-        <h3>Rotary Actuators</h3>
-        <p>Compact and powerful solutions for rotational motion control.</p>
-      </div>
-      <div class="product-card">
-        <h3>Linear Actuators</h3>
-        <p>Smooth and accurate linear movement for a wide range of applications.</p>
-      </div>
+     <div class="disclaimer">
+  <p><strong>Technical Specifications Disclaimer:</strong>  
+  All product specifications, including torque, weight, and performance values, are provided for reference only and are subject to change without prior notice. Actual performance may vary depending on operating conditions such as pressure, temperature, media, and installation environment. Puretork reserves the right to modify product design or discontinue products at any time without obligation. For the latest information, please contact Puretork directly.</p>
+</div>
     </div>
   </section>
-
+</section>
   <footer>
     <p>&copy; 2025 Puretork. All rights reserved.</p>
   </footer>
+  <script>
+  const menuBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('.main-nav');
+
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
 </body>
 </html>
