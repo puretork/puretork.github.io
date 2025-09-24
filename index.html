@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Puretork | Engineered for Excellence</title>
+<!-- saved from url=(0173)file:///C:/Users/tinap/OneDrive%20-%20Puretork/Lin%20Yu-Cheng's%20files%20-%20Puretork/005%20Sales%20and%20Marketing/website%20material/Website_Package/Website_r4/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="file:///C:/Users/tinap/OneDrive%20-%20Puretork/Lin%20Yu-Cheng&#39;s%20files%20-%20Puretork/005%20Sales%20and%20Marketing/website%20material/Website_Package/Website_r4/Favicon%2032x32.png">
+  <title>Puretork | High-Performance Pneumatic Actuators</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: #ffffff;
       color: #000000;
+	  background-image: url("product_img_0010.png");  /* path to your image */
+  background-repeat: no-repeat;             /* don’t tile it */
+  background-size: 100%;                   
+  background-position: 50% 125%; 
     }
     header {
       background-color: #000000;
@@ -19,31 +24,79 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav a {
-      color: #F4B728;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+	/* Desktop / tablet */
+	nav{
+	  display:flex;
+	  align-items:center;
+	  justify-content:flex-start;   /* ensure nothing is spaced out */
+	  gap:0.75rem;                  /* use gap for spacing, not margins */
+	}
+
+	nav a{
+	  color:#F4B728;
+	  text-decoration:none;
+	  font-weight:bold;
+	  margin:0;                     /* reset any margins */
+	  padding:0 .75rem;             /* spacing inside the link */
+	}
+
+	/* In case some other CSS had margin-left:auto on the last link */
+	nav a:last-child{
+		  margin-left:0 !important;     /* prevents it from being pushed to the right */
+		  /* if you want it white: */
+		  color:#fff;
+		}
+
+		/* Phone smaller than 480px */
+	@media (max-width:480px){
+	  nav{
+		flex-direction:column;
+		align-items:flex-end;        /* right edge */
+		text-align:right;
+		padding-right:16px;          /* breathing room from the screen edge */
+	  }
+	  nav a{
+		display:block;
+		width:100%;
+		padding:.5rem 0;             /* comfy tap targets */
+	  }
+	}
     .hero {
       background-color: #F4B728;
       color: #000000;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
     }
     .hero h1 {
       font-size: 3rem;
     }
-    .content {
+	.hero h2 {
+		  font-size: 1.5rem;
+			color: #333333;
+		}    
+	.content {
       padding: 2rem;
       text-align: center; /* Center content for better image presentation */
     }
+
+    .content p {
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto 2rem auto;
+      text-align: left;
+    }        
     .content img {
       max-width: 100%; /* Make image responsive */
       height: auto;
       border-radius: 8px;
       margin-bottom: 2rem; /* Spacing below the image */
     }
+
+	/* Styles for the logo */
+    .logo {
+      max-width: 280px;
+	  height: auto; /* Adjust height as needed */
+}
     footer {
       background-color: #000000;
       color: #ffffff;
@@ -54,29 +107,36 @@
 </head>
 <body>
   <header>
-    <div class="logo">Puretork</div>
+    <!-- <div class="logo">Puretork</div> -->
+    <div class="logo-container">
+      <img src="LogoV5_horizontal.png" alt="Puretork Company Logo" class="logo">
+    </div> 
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="products.html">Products</a>
-      <a href="services.html">Services</a>
+      <!-- <a href="services.html">Services</a> -->
       <a href="contact.html">Contact</a>
-    </nav>
+      <!-- Language switcher -->
+      <a href="index_tc.html" style="color: white;">中文</a>
+	  </nav>
   </header>
 
   <section class="hero">
-    <h1>Engineering Motion. Delivering Power.</h1>
-    <p>Puretork specializes in high-performance actuator solutions for industrial and commercial applications.</p>
+<h1>High-Performance Pneumatic Actuators</h1>
+<h2><strong>Puretork</strong> brings 35+ years of expertise in rack &amp; pinion actuator design and valve automation solutions, delivering dependable motion control for global industries.</h2>
   </section>
-
   <section class="content">
-    <img src="https://placehold.co/800x400/F4B728/000000?text=Industrial+Actuators" alt="Industrial Actuators in action" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
-    <h2>Welcome to Puretork</h2>
-    <p>We are a leading provider of engineered actuation and motion control systems, with a commitment to quality, precision, and durability.</p>
+    <h2>Engineering Motion. Delivering Power.</h2>
+<p>Our focus is on innovative, durable pneumatic actuator technology that drives efficiency and reliability in demanding industrial environments.</p>
+
+<h2>Core Product</h2>
+<p>The PRPA (Puretork Rack & Pinion Actuator) is our flagship quarter-turn pneumatic actuator, featuring a proprietary, patent-pending integrated air reservoir design. Building on an innovation first introduced by our group in 2011, the PRPA has been refined for greater strength, longevity, and consistent performance, representing the next generation of pneumatic actuation.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Puretork. All rights reserved.</p>
+    <p>© 2025 Puretork. All rights reserved.</p>
   </footer>
-</body>
-</html>
+
+
+</body></html>
