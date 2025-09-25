@@ -2,272 +2,339 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="Favicon 32x32.png">
-  <title>Puretork | Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" href="Favicon%2032x32.png" />
+
+  <title>Puretork | Contact Us | Rack & Pinion Pneumatic Actuators</title>
+  <meta name="description" content="Contact Puretork to discuss rack & pinion pneumatic actuators, spring-less fail-safe solutions, and valve automation. Our team will respond as soon as possible." />
+  <meta name="keywords" content="contact Puretork, pneumatic actuators contact, rack and pinion actuators, valve automation, fail-safe actuator" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Puretork | Contact Us" />
+  <meta property="og:description" content="Get in touch with Puretork for pneumatic actuator and valve automation solutions." />
+  <meta property="og:image" content="https://www.puretork.com/PRPA_actuator_01.png" />
+  <meta property="og:url" content="https://www.puretork.com/contact.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <style>
-/* Styles for screens larger than 768px (e.g., desktops and tablets) */
-  .page-wrapper {
-    position: relative;
-	background-image: url("product_img_0010.png");
-    background-size: 155%; /* or contain, or a specific size */
-    background-repeat: no-repeat;
-    background-position: 50% 20%;
-	flex-grow: 1;
-}
-  /* Media query for screens up to 768px (e.g., phones) */
-@media (max-width: 768px) {
-    .page-wrapper {
-        /* You might want a different background-size for smaller screens */
-        background-size: 300%;
-        background-repeat: no-repeat;
-		background-position: center bottom;
-		flex-grow: 1;
+    /* =========================
+       Design tokens (shared)
+    ========================== */
+    :root{
+      --brand-bg: #000000;
+      --brand-fg: #F4B728;
+      --text: #000000;
+      --muted: #333333;
+      --surface: #f9f9f9;
+      --surface-2: #f7f7f7;
+      --border: #eee;
+      --border-2: #d3a31f;
+      --shadow: 0 4px 8px rgba(0,0,0,.1);
+      /* --container: 1100px; */
+      --space-1: .5rem;
+      --space-2: .75rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 3rem;
     }
-}
- /*.page-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.05) /* Adjust opacity here (0.0 to 1.0) */
-    z-index: -1;  /*Place the overlay behind the content */
-}*/
-html, body {
-    height: 100%; /* Important: Make sure both html and body take up the full viewport height */
-    margin: 0;
-}
+
+    /* =========================
+       Base
+    ========================== */
+    html, body { height: 100%; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-      color: #000000;
-	  display: flex;
-		flex-direction: column;
-		position: relative;
-    }
-    header {
-      background-color: #000000;
-      color: #F4B728;
-      padding: 1rem;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #fff;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      min-height: 100dvh;
+    }
+    img { max-width: 100%; height: auto; }
+    .container { width: min(100% - 2rem, var(--container)); margin-inline: auto; }
+
+    /* Accessibility helpers */
+    .skip-link { position: absolute; left: -999px; top: -999px; }
+    .skip-link:focus {
+      left: .5rem; top: .5rem; background: #fff;
+      padding: .5rem .75rem; border: 2px solid var(--brand-fg);
+      border-radius: .4rem; z-index: 9999;
+    }
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+    }
+
+    /* =========================
+       Fixed background layer
+    ========================== */
+    .bg-fixed{
+      position: fixed; 
+	  inset: 0; 
+	  z-index: -2;
+      background-image: 
+	  linear-gradient(
+	  rgba(255, 255, 255, 0.95),
+	  rgba(255, 255, 255, 0.95)),
+	  url("ai_background_002.png");
+      background-size: cover; background-repeat: no-repeat; background-position: 50% 20%;
+    }
+    .bg-fixed::after{
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      
+    }
+    @media (max-width: 768px){
+      .bg-fixed{ background-position: center bottom; 
+	  background-image: 
+		  linear-gradient(
+		  to right, 
+		  rgba(255, 255, 255, 0.95), 
+		  rgba(255, 255, 255, 0.95)),
+		  url("ai_background_002.png");
+		  }
+    }
+
+    /* =========================
+       Header / Nav
+    ========================== */
+    header {
+      background: var(--brand-bg);
+      color: var(--brand-fg);
+      position: relative;   /* anchor for dropdown */
+      z-index: 1000;        /* above content */
+    }
+    .header-inner {
+      display: flex;
       align-items: center;
-		position: relative;								  
+      justify-content: space-between;
+      gap: var(--space-3);
+      padding-block: var(--space-3);
+      padding-inline: var(--space-3);
     }
-    /* Desktop / tablet */
-	nav{
-	  display:flex;
-	  align-items:center;
-	  justify-content:flex-start;   /* ensure nothing is spaced out */
-	  gap:0.75rem;                  /* use gap for spacing, not margins */
-	}
+    .logo { max-width: 275px; height: auto; }
 
-	nav a{
-	  color:#F4B728;
-	  text-decoration:none;
-	  font-weight:bold;
-	  margin:0;                     /* reset any margins */
-	  padding:0 .75rem;             /* spacing inside the link */
-	}
+    .main-nav { display: flex; gap: var(--space-2); }
+    .main-nav a {
+      color: var(--brand-fg);
+      text-decoration: none;
+      font-weight: 700;
+      padding: 0 .75rem;
+    }
+    .main-nav a:last-child { color: #fff; }
 
-	/* In case some other CSS had margin-left:auto on the last link */
-	nav a:last-child{
-		  margin-left:0 !important;     /* prevents it from being pushed to the right */
-		  /* if you want it white: */
-		  color:#fff;
-		}
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: 0;
+      color: var(--brand-fg);
+      cursor: pointer;
+      line-height: 1;
+    }
 
-.main-nav {
-  display: flex;
-  gap: 0.75rem;
-}
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;
-    flex-direction: column;
-    background: #000;
-    padding: 1rem;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    z-index: 1000;           /* ✅ ensure it overlays content */
-  }
-}
+    /* Mobile nav (right-aligned) */
+    @media (max-width: 768px) {
+      .menu-toggle { display: inline-block; }
+      .main-nav {
+        position: absolute;
+        inset-inline: 0;    /* full width */
+        top: 100%;
+        display: none;      /* hidden by default */
+        flex-direction: column;
+        background: var(--brand-bg);
+        padding: var(--space-3);
+        z-index: 1000;
+        text-align: right;  /* right-align text */
+        align-items: flex-end; /* right edge */
+      }
+      .main-nav.show { display: flex; }
+      .main-nav a {
+        padding: .75rem 0;
+        border-bottom: 1px solid #333;
+        color: var(--brand-fg);
+        width: 100%;
+      }
+      .main-nav a:last-child { border-bottom: none; }
+    }
 
-/* Hide hamburger on desktop */
-.menu-toggle {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  color: #F4B728;
-  cursor: pointer;
-}
+    /* =========================
+       Layout
+    ========================== */
+    main { flex: 1; }
+    .page-wrapper { position: relative; flex: 1; }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;               /* hide nav by default */
-    flex-direction: column;
-    background: #000;
-    padding: 1rem;
-    position: absolute;
-    top: 100%;                   /* drop below header */
-    right: 0;
-    left: 0;
-  }
-  .main-nav.show {
-    display: flex;               /* show nav when toggled */
-  }
-  .menu-toggle {
-    display: block;              /* show hamburger on mobile */
-  }
-  .main-nav a {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #333;
-    color: #F4B728;
-  }
-  .main-nav a:last-child {
-    border-bottom: none;
-  }
-}
+    /* =========================
+       Hero
+    ========================== */
     .hero {
-      background-color: rgba(244, 183, 40, 0.85);/*#F4B728;*/
-      color: #000000;
+      background: rgba(244, 183, 40, 1);
+      color: #000;
       text-align: center;
-      padding: 3rem 2rem;
+      padding: var(--space-6) var(--space-5);
+	  
     }
-    .hero h1 {
-      font-size: 3rem;
-    }
-.hero h2 {
-      font-size: 1.5rem;
-color: #333333;
-    }
+    .hero h1 { font-size: clamp(2rem, 2.8vw + 1rem, 3rem); }
+    .hero h2 { font-size: clamp(1.125rem, .8vw + .8rem, 1.5rem); color: var(--muted); }
+
+    /* =========================
+       Content
+    ========================== */
     .content {
-      padding: 2rem;
-      text-align: center; /* Center content for better image presentation */
-		flex-grow: 1;		
+      padding: var(--space-5) var(--space-3);
+      text-align: center;
     }
-    .content img {
-      max-width: 100%; /* Make image responsive */
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 2rem; /* Spacing below the image */
-    }
-/* Styles for the logo */
-    .logo {
-      max-width: 275px;
-	  height: auto; /* Adjust height as needed */
-}
+    .content p { font-size: 1.1rem; line-height: 1.7; }
+
+    /* Contact panel (optional if you want static info too) */
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #f9f9f9;
-      text-align: left; /* Align text within contact info */
-    }
-    .contact-info div {
-      display: flex;
-      align-items: center;
       gap: 1rem;
+      max-width: 700px;
+      margin: var(--space-4) auto;
+      padding: var(--space-4);
+      border: 1px solid var(--border);
+      border-radius: .5rem;
+      background: var(--surface-2);
+      text-align: left;
+      box-shadow: var(--shadow);
     }
-    .contact-info div strong {
-      min-width: 80px;
+    .contact-info div { display: flex; align-items: center; gap: .75rem; }
+    .contact-info div strong { min-width: 110px; }
+
+    /* Forms embed */
+    .form-embed {
+      max-width: 900px;
+      margin: 0 auto;
     }
+    .form-embed iframe {
+      width: 100%;
+      height: min(900px, 100vh);
+      border: none;
+    }
+
+    /* =========================
+       Footer
+    ========================== */
     footer {
-      background-color: #000000;
-      color: #ffffff;
+      background: var(--brand-bg);
+      color: #fff;
       text-align: center;
-      padding: 1rem;
+      padding: var(--space-3);
     }
+
+    /* =========================
+       UX niceties
+    ========================== */
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
   </style>
 </head>
 <body>
+  <!-- Social/SEO helper for image context -->
+  <img src="PRPA_actuator_01.png" alt="Puretork PRPA Rack & Pinion Pneumatic Actuator" class="visually-hidden" />
+
+  <!-- Fixed background layer -->
+  <div class="bg-fixed" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header>
-    <!-- <div class="logo">Puretork</div> -->
-    <div class="logo-container">
-      <img src="LogoV5_horizontal.png" alt="Puretork Company Logo" class="logo">
-    </div>
-	<!-- Hamburger button (only shows on mobile) -->
-  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link" aria-label="Puretork home">
+        <img src="Puretork_Logo_v5h.png" alt="Puretork" class="logo" width="275" height="70" />
+      </a>
 
-  <!-- Navigation -->
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="products.html">Products</a>
-												   
-    <a href="contact.html">Contact Us</a>
-								
-															  
-  </nav>
+      <button
+        class="menu-toggle"
+        aria-label="Toggle menu"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <nav id="primary-navigation" class="main-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html" aria-current="page">Contact Us</a>
+      </nav>
+    </div>
   </header>
- <section class="page-wrapper">
-  <section class="hero">
-    <h1>Contact Puretork</h1>
-    <h2>We're here to help you find the perfect actuation solution.</h2>
-  </section>
 
-  <section class="content">
-    <!--
-    <img src="https://placehold.co/800x400/F4B728/000000?text=Global+Reach+Contact+Us" alt="World map with contact points" onerror="this.onerror=null;this.src='https://placehold.co/800x400/cccccc/000000?text=Image+Not+Found';" />
-    <h2>Get in Touch</h2>
-    <p>Have questions about our products, services, or need technical support? Our team is ready to assist you.</p>
-    -->
+  <main id="main">
+    <section class="page-wrapper">
+      <section class="hero">
+        <div class="container">
+          <h1>Contact Puretork</h1>
+          <h2>We're ready to help you simplify operations and cut costs. <br>
+		  <br>Are you ready to explore what’s possible?</h2>
+        </div>
+      </section>
 
-    <!--
-    <div class="contact-info">
-      <div>
-        <strong>Email:</strong>
-        <p>puretork@puretork.com</p>
-      </div>
-      <div>
-        <strong>Phone:</strong>
-        <p>+1 (123) 456-7890</p>
-      </div>
-      <div>
-        <strong>Address:</strong>
-        <p>16F., No.847, Sec. 4, Taiwan Blvd., Xitun Dist., Taichung City, Taiwan</p>
-      </div>
-      <div>
-        <strong>Business Hours:</strong>
-        <p>Monday - Friday: 9:00 AM - 5:00 PM (Local Time)</p>
-      </div>
-    </div>
-    -->
+      <section class="content container">
+        <!-- Optional static contact block (uncomment and fill if desired)
+        <div class="contact-info">
+          <div><strong>Email:</strong><span>puretork@puretork.com</span></div>
+          <div><strong>Phone:</strong><span>+1 (123) 456-7890</span></div>
+          <div><strong>Address:</strong><span>16F., No.847, Sec. 4, Taiwan Blvd., Xitun Dist., Taichung City, Taiwan</span></div>
+          <div><strong>Hours:</strong><span>Mon–Fri, 9:00–17:00 (Local Time)</span></div>
+        </div>
+        -->
 
-    <h2>Send Us a Message</h2>
-    <p>You can also reach us by filling out the form below. We will get back to you as soon as possible.</p>
-    <iframe width="640px" height="900px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=KcYMV6ewm0mBULdS3o7PbozXMRfg_eZKqYEow3QLa-RUQlQwS05PVFdKOTJJUjRUNlNKRUFKNk00VSQlQCN0PWcu&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+        <h2>Send Us a Message</h2>
+        <p>Use the form below and we’ll get back to you as soon as possible.</p>
 
-    
+        <div class="form-embed">
+          <iframe
+            src="https://forms.office.com/Pages/ResponsePage.aspx?id=KcYMV6ewm0mBULdS3o7PbozXMRfg_eZKqYEow3QLa-RUQlQwS05PVFdKOTJJUjRUNlNKRUFKNk00VSQlQCN0PWcu&embed=true"
+            frameborder="0"
+            marginwidth="0"
+            marginheight="0"
+            allowfullscreen
+            webkitallowfullscreen
+            mozallowfullscreen
+            msallowfullscreen
+          ></iframe>
+        </div>
+      </section>
+    </section>
+  </main>
 
-
-    <!-- In a real scenario, a contact form would be implemented here -->
-    <!-- <p style="text-align: center; color: #888;">[Contact Form Placeholder]</p> -->
-  </section>
-</section>
   <footer>
     <p>&copy; 2025 Puretork. All rights reserved.</p>
   </footer>
- <script>
-  const menuBtn = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.main-nav');
 
-  menuBtn.addEventListener('click', () => {
-    nav.classList.toggle('show');
-  });
-</script>		  
+  <script>
+    // Accessible + resilient mobile menu (same pattern as baseline)
+    (function () {
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.getElementById('primary-navigation');
+
+      function setExpanded(isOpen) {
+        btn.setAttribute('aria-expanded', String(isOpen));
+        nav.classList.toggle('show', isOpen);
+      }
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        setExpanded(!open);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setExpanded(false);
+      });
+
+      // Ensure correct state on resize (prevents stuck "show" on desktop)
+      const mq = window.matchMedia('(max-width: 768px)');
+      mq.addEventListener('change', () => {
+        if (!mq.matches) setExpanded(false);
+      });
+    })();
+  </script>
 </body>
 </html>
-
